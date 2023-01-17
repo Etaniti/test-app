@@ -64,9 +64,9 @@
                         @foreach ($organization->employees as $employee)
                             <tr>
                                 <td class="text-center align-middle">{{ $loop->iteration }}</td>
+                                <td class="text-center align-middle">{{ $employee->lastname }}</td>
                                 <td class="text-center align-middle">{{ $employee->firstname }}</td>
                                 <td class="text-center align-middle">{{ $employee->middlename }}</td>
-                                <td class="text-center align-middle">{{ $employee->lastname }}</td>
                                 <td class="text-center align-middle">{{ date('d-m-Y', strtotime($employee->birthdate)) }}
                                 </td>
                                 <td class="text-center align-middle">{{ $employee->inn }}</td>
