@@ -14,12 +14,7 @@ class XmlReaderController extends Controller
             $xmlDataString = file_get_contents($request->xmlFile);
             $xmlObject = simplexml_load_string($xmlDataString);
 
-            $json = json_encode($xmlObject);
-
-            print_r($xmlObject);
-
             foreach ($xmlObject as $org) {
-                /* var_dump($org); */
                 $organization = new Organization();
                 $organization->name = $org['name'];
                 $organization->ogrn = $org['ogrn'];
@@ -34,7 +29,6 @@ class XmlReaderController extends Controller
                     $employee->birthdate = $item['birthdate'];
                     $employee->inn = $item['inn'];
                     $employee->snils = $item['snils'];
-                    /* var_dump($organization->id); */
                     $employee->organization_id = $organization->id;
                     $employee->save();
                 }

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "331a64f578c2f3999a0e4fa43ecfe637",
+    "content-hash": "6d1952964bbd432c69fe9123345cb281",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -889,6 +889,63 @@
                 }
             ],
             "time": "2022-10-26T14:07:24+00:00"
+        },
+        {
+            "name": "hivokas/laravel-handlers",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/hivokas/laravel-handlers.git",
+                "reference": "530db7ffe3f8ba4c6f35b6096d82832d06c8b6cf"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/hivokas/laravel-handlers/zipball/530db7ffe3f8ba4c6f35b6096d82832d06c8b6cf",
+                "reference": "530db7ffe3f8ba4c6f35b6096d82832d06c8b6cf",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1"
+            },
+            "require-dev": {
+                "orchestra/testbench": "~3.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Hivokas\\LaravelHandlers\\Providers\\HandlersServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Hivokas\\LaravelHandlers\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ilya Sakovich",
+                    "email": "me@hivokas.com"
+                }
+            ],
+            "description": "Handlers implementation for Laravel",
+            "keywords": [
+                "action",
+                "handler",
+                "handlers",
+                "laravel",
+                "single"
+            ],
+            "support": {
+                "issues": "https://github.com/hivokas/laravel-handlers/issues",
+                "source": "https://github.com/hivokas/laravel-handlers/tree/0.1.0"
+            },
+            "time": "2018-07-20T14:02:50+00:00"
         },
         {
             "name": "laravel/framework",
@@ -5635,17 +5692,67 @@
             "time": "2020-07-09T08:09:16+00:00"
         },
         {
-            "name": "laravel/sail",
-            "version": "v1.18.0",
+            "name": "hisman/laravel-make-class",
+            "version": "1.0.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/laravel/sail.git",
-                "reference": "77feb38df1cf8700c19487957dfb12087cd696c7"
+                "url": "https://github.com/hisman/laravel-make-class.git",
+                "reference": "9d69f116ca92a158b2c1f4e958f08828f4142477"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/sail/zipball/77feb38df1cf8700c19487957dfb12087cd696c7",
-                "reference": "77feb38df1cf8700c19487957dfb12087cd696c7",
+                "url": "https://api.github.com/repos/hisman/laravel-make-class/zipball/9d69f116ca92a158b2c1f4e958f08828f4142477",
+                "reference": "9d69f116ca92a158b2c1f4e958f08828f4142477",
+                "shasum": ""
+            },
+            "require-dev": {
+                "mockery/mockery": "^1.2",
+                "orchestra/testbench": "^3.7",
+                "phpunit/phpunit": "^7.4"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Hisman\\MakeClass\\MakeClassServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Hisman\\MakeClass\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Hisman",
+                    "homepage": "https://hisman.co",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Artisan command for generating a new custom class in Laravel.",
+            "support": {
+                "issues": "https://github.com/hisman/laravel-make-class/issues",
+                "source": "https://github.com/hisman/laravel-make-class/tree/master"
+            },
+            "time": "2019-03-04T06:47:06+00:00"
+        },
+        {
+            "name": "laravel/sail",
+            "version": "v1.18.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laravel/sail.git",
+                "reference": "a64f78a4ab86c04a4c5de39bea20a8d36ad48a22"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/laravel/sail/zipball/a64f78a4ab86c04a4c5de39bea20a8d36ad48a22",
+                "reference": "a64f78a4ab86c04a4c5de39bea20a8d36ad48a22",
                 "shasum": ""
             },
             "require": {
@@ -5692,7 +5799,7 @@
                 "issues": "https://github.com/laravel/sail/issues",
                 "source": "https://github.com/laravel/sail"
             },
-            "time": "2023-01-10T16:14:21+00:00"
+            "time": "2023-01-11T14:35:04+00:00"
         },
         {
             "name": "mockery/mockery",

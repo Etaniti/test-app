@@ -2,10 +2,11 @@
 
 namespace App\Http\Livewire;
 
+use App\Classes\EmployeeHandler;
 use Livewire\Component;
 use Illuminate\Http\Request;
-use App\Http\Livewire\Field;
-use App\Models\Organization;
+use App\Http\Requests\Employee\CreateRequest;
+use App\Http\Requests\Employee\UpdateRequest;
 use App\Models\Employee;
 
 class Employees extends Component
@@ -18,40 +19,10 @@ class Employees extends Component
         return view("/organization/{{ $organization_id }}", compact('organization_id'));
     }
 
-    public function store(Request $request)
+    public function store(CreateRequest $request)
     {
-        $data = $request->validate(
-            [
-                'firstname' => ['required', 'string', 'max:50'],
-                'middlename' => ['required', 'string', 'max:50'],
-                'lastname' => ['required', 'string', 'max:50'],
-                'birthdate' => ['required', 'date'],
-                'inn' => ['required', 'integer', 'digits:12', 'unique:employees'],
-                'snils' => ['required', 'integer', 'digits:11', 'unique:employees']
-            ],
-            [
-                'firstname' => 'Значение поля некорректно.',
-                'middlename' => 'Значение поля некорректно.',
-                'lastname' => 'Значение поля некорректно.',
-                'birthdate' => 'Значение поля некорректно.',
-                'inn' => 'Значение поля некорректно.',
-                'snils' => 'Значение поля некорректно.'
-            ]
-        );
-
-        Employee::create([
-            'organization_id' => $request->organization_id,
-            'firstname' => $request->firstname,
-            'middlename' => $request->middlename,
-            'lastname' => $request->lastname,
-            'birthdate' => $request->birthdate,
-            'inn' => $request->inn,
-            'snils' => $request->snils
-        ]);
-
-        return back()->with('success', 'Сотрудник успешно добавлен.');
-
-        $this->dispatchBrowserEvent('refresh-page');
+        $employee = new EmployeeHandler();
+        return $employee->store($request);
     }
 
     public function show($id)
@@ -60,40 +31,10 @@ class Employees extends Component
         return view('employees.show', compact('employee'));
     }
 
-    public function update(Request $request, $id)
+    public function update(UpdateRequest $request, $id)
     {
-        $data = $request->validate(
-            [
-                'firstname' => ['required', 'string', 'max:50'],
-                'middlename' => ['required', 'string', 'max:50'],
-                'lastname' => ['required', 'string', 'max:50'],
-                'birthdate' => ['required', 'date'],
-                'inn' => ['required', 'integer', 'digits:12'],
-                'snils' => ['required', 'integer', 'digits:11']
-            ],
-            [
-                'firstname' => 'Значение поля некорректно.',
-                'middlename' => 'Значение поля некорректно.',
-                'lastname' => 'Значение поля некорректно.',
-                'birthdate' => 'Значение поля некорректно.',
-                'inn' => 'Значение поля некорректно.',
-                'snils' => 'Значение поля некорректно.'
-            ]
-        );
-
-        $employee = Employee::whereId($id)->update([
-            'organization_id' => $request->organization_id,
-            'firstname' => $request->firstname,
-            'middlename' => $request->middlename,
-            'lastname' => $request->lastname,
-            'birthdate' => $request->birthdate,
-            'inn' => $request->inn,
-            'snils' => $request->snils
-        ]);
-
-        return back()->with('success', 'Изменения сохранены.');
-
-        $this->updateMode = false;
+        $employee = new EmployeeHandler();
+        return $employee->update($request, $id);
     }
 
     public function delete($id)
@@ -104,9 +45,7 @@ class Employees extends Component
 
     public function destroy($id)
     {
-        $employee = Employee::where('id', $id)->firstOrFail();
-        $employee->delete();
-
-        return redirect("/")->with('success', 'Сотрудник удален.');
+        $employee = new EmployeeHandler();
+        return $employee->destroy($id);
     }
 }
